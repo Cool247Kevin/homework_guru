@@ -33,7 +33,7 @@ public class MainActivity extends ListActivity {
         });
     }
 
-    //setuo slide
+    //setup slide
     private void setUpWindowAnimations() {
 
         Slide slide = new Slide();
