@@ -9,10 +9,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.appbrainmob.bubblesoft.homeworkguru.R;
 import com.appbrainmob.bubblesoft.homeworkguru.adaptors.MenuAdaptor;
 import com.appbrainmob.bubblesoft.homeworkguru.views.AlertDialogView;
 
-public class TempActivity extends ListActivity {
+public class SettingsActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class TempActivity extends ListActivity {
 
         String [] choice_list = {"Solve It", "Share", "About Us", "Contact"};
 
-        setListAdapter(new MenuAdaptor(TempActivity.this, choice_list));
+        setListAdapter(new MenuAdaptor(SettingsActivity.this, choice_list));
         ListView lv = getListView();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,16 +58,16 @@ public class TempActivity extends ListActivity {
 
             case 2:
                 AlertDialogView adv2 = new AlertDialogView();
-                adv2.aboutUs(TempActivity.this);
+                adv2.aboutUs(SettingsActivity.this);
                 break;
 
             case 3:
                 AlertDialogView adv3 = new AlertDialogView();
-                adv3.contactUs(TempActivity.this);
+                adv3.contactUs(SettingsActivity.this);
                 break;
 
             default:
-                Toast.makeText(getApplicationContext(), "PLEASE PUSH A VALID BUTTON !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.warning, Toast.LENGTH_LONG).show();
                 break;
         }
     }

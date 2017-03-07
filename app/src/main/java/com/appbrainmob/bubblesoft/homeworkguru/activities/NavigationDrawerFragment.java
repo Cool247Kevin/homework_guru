@@ -4,6 +4,8 @@ package com.appbrainmob.bubblesoft.homeworkguru.activities;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +25,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.appbrainmob.bubblesoft.homeworkguru.R;
+import com.appbrainmob.bubblesoft.homeworkguru.views.AlertDialogView;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -55,6 +58,8 @@ public class NavigationDrawerFragment extends Fragment {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerListView;
     private View mFragmentContainerView;
+
+    private Context context;
 
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
@@ -94,9 +99,12 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.drawer_main, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            NavigationDrawerFragment ndf = new NavigationDrawerFragment();
+            private Context context = ndf.context;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
+                pressButton(position, context);
             }
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
@@ -256,6 +264,41 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setContext(Context context) {
+
+        this.context = context;
+    }
+
+    private void pressButton(int position, Context context) {
+
+        switch (position) {
+
+            case 0:
+                Intent it0 = new Intent(getActivity().getApplicationContext(), ShareActivity.class);
+                startActivity(it0);
+                break;
+
+            case 1:
+                AlertDialogView adv2 = new AlertDialogView();
+                adv2.aboutUs(context);
+                break;
+
+            case 2:
+                AlertDialogView adv3 = new AlertDialogView();
+                adv3.contactUs(context);
+                break;
+
+            case 3:
+                Intent it1 = new Intent(getActivity().getApplicationContext(), SettingsActivity.class);
+                startActivity(it1);
+                break;
+
+            default:
+                Toast.makeText(getActivity().getApplicationContext(), R.string.warning, Toast.LENGTH_LONG).show();
+                break;
+        }
     }
 
     /**

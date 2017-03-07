@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">HomeworkGuru</string>
+    <string name="app_name">Homework Guru</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="action_example">Example</string>
     <string name="action_settings">Settings</string>
     <string name="about_us">ABOUT US !</string>
     <string name="contact_us">CONTACT US !</string>
@@ -15,5 +15,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_example">Example action</string>
+    <string name="warning">PLEASE PUSH A VALID BUTTON !</string>
+
 </resources>

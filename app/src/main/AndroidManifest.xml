@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.TempActivity"></activity>
+        <activity android:name=".activities.SettingsActivity"></activity>
         <activity android:name=".activities.ShareActivity"></activity>
         <activity android:name=".activities.SolveItActivity"></activity>
         <activity
