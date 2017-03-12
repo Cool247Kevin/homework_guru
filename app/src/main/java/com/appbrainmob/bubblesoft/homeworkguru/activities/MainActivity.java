@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -75,6 +76,12 @@ public class MainActivity extends Activity
         ndf.setContext(context);
     }
 
+    public void btnCameraOn(View view) {
+
+        Intent it = new Intent(getApplicationContext(), SolveItActivity.class);
+        startActivity(it);
+    }
+
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -121,5 +128,4 @@ public class MainActivity extends Activity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
-
 }

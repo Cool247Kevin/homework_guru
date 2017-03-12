@@ -4,14 +4,16 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.appbrainmob.bubblesoft.homeworkguru.activities.MainActivity">
+    tools:context="com.appbrainmob.bubblesoft.homeworkguru.activities.MainActivity"
+    android:onClick="btnCAMERA">
 
     <!-- As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. -->
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:onClick="btn">
 
 
         <Button
@@ -19,7 +21,8 @@
             android:layout_height="200dp"
             android:background="@drawable/ic_camera_alt_black"
             android:id="@+id/button"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:onClick="btnCameraOn" />
 
     </FrameLayout>
 
