@@ -40,8 +40,6 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
-        pressButton(MainActivity.this);
     }
 
     @Override
@@ -68,12 +66,6 @@ public class MainActivity extends Activity
                 mTitle = getString(R.string.title_section4);
                 break;
         }
-    }
-
-    private void pressButton(Context context) {
-
-        NavigationDrawerFragment ndf = new NavigationDrawerFragment();
-        ndf.setContext(context);
     }
 
     public void btnCameraOn(View view) {
