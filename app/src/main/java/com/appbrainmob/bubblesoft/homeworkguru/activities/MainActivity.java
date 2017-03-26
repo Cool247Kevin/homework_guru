@@ -4,15 +4,18 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.appbrainmob.bubblesoft.homeworkguru.R;
+import com.appbrainmob.bubblesoft.homeworkguru.tasks.RequestApisForCommunication;
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -27,6 +30,16 @@ public class MainActivity extends Activity
      */
     private CharSequence mTitle;
 
+    private ProgressDialog pDialog;
+
+    public ProgressDialog getpDialog() {
+        return this.pDialog;
+    }
+
+    public void setpDialog(ProgressDialog pDialog) {
+        this.pDialog = pDialog;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +53,12 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+    }
+
+    private void accessApi(Context context) {
+
+        RequestApisForCommunication requestApis = new RequestApisForCommunication(context);
+        requestApis.accessApi();
     }
 
     @Override
@@ -70,8 +89,17 @@ public class MainActivity extends Activity
 
     public void btnCameraOn(View view) {
 
-        Intent it = new Intent(getApplicationContext(), SolveItActivity.class);
-        startActivity(it);
+        accessApi(MainActivity.this);
+
+        final int delayTime = 10000;
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent it = new Intent(getApplicationContext(), SolveItActivity.class);
+                startActivity(it);
+            }
+        }, delayTime);
     }
 
     public void restoreActionBar() {

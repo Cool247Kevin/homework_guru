@@ -2,6 +2,8 @@ package com.appbrainmob.bubblesoft.homeworkguru.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.transition.Fade;
@@ -20,12 +22,15 @@ public class SolveItActivity extends Activity {
     }
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private Bitmap bitmap;
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
+
+        bitmap = BitmapFactory.decodeFile("drawable/l2equation.JPG");
     }
 
     private void setUpWindowAnimations() {

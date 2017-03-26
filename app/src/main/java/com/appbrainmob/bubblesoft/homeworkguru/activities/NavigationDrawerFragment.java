@@ -1,20 +1,18 @@
 package com.appbrainmob.bubblesoft.homeworkguru.activities;
 
 
-import android.app.Activity;
 import android.app.ActionBar;
-import android.app.AlertDialog;
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -105,7 +103,7 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
-                pressButton(position, context);
+                pressButton(position);
             }
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
@@ -267,12 +265,7 @@ public class NavigationDrawerFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setContext(Context context) {
-
-        this.context = context;
-    }
-
-    private void pressButton(int position, Context context) {
+    private void pressButton(int position) {
 
         switch (position) {
 
@@ -283,12 +276,12 @@ public class NavigationDrawerFragment extends Fragment {
 
             case 1:
                 AlertDialogView adv2 = new AlertDialogView();
-                adv2.aboutUs(context);
+                adv2.aboutUs(this.context);
                 break;
 
             case 2:
                 AlertDialogView adv3 = new AlertDialogView();
-                adv3.contactUs(context);
+                adv3.contactUs(this.context);
                 break;
 
             case 3:
