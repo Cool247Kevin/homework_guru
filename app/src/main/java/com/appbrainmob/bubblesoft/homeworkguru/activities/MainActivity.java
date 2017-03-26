@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
@@ -16,6 +17,10 @@ import android.view.ViewGroup;
 
 import com.appbrainmob.bubblesoft.homeworkguru.R;
 import com.appbrainmob.bubblesoft.homeworkguru.tasks.RequestApisForCommunication;
+import com.googlecode.tesseract.android.TessBaseAPI;
+
+import java.io.File;
+import java.util.Calendar;
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -53,6 +58,7 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
     }
 
     private void accessApi(Context context) {
@@ -89,7 +95,10 @@ public class MainActivity extends Activity
 
     public void btnCameraOn(View view) {
 
-        accessApi(MainActivity.this);
+        Intent it = new Intent(MainActivity.this, OCRActivity.class);
+        startActivity(it);
+
+        /*accessApi(MainActivity.this);
 
         final int delayTime = 10000;
 
@@ -99,7 +108,7 @@ public class MainActivity extends Activity
                 Intent it = new Intent(getApplicationContext(), SolveItActivity.class);
                 startActivity(it);
             }
-        }, delayTime);
+        }, delayTime);*/
     }
 
     public void restoreActionBar() {

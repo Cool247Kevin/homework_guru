@@ -6,6 +6,7 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -23,10 +24,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity"></activity>
-        <activity android:name=".activities.SolveItActivity"></activity>
-        <activity android:name=".activities.ShareActivity"></activity>
-        <activity android:name=".activities.SettingsActivity"></activity>
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.SolveItActivity" />
+        <activity android:name=".activities.ShareActivity" />
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.OCRActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>
