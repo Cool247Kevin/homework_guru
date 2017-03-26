@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:support-v4:25.2.0'
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    compile 'com.rmtheis:tess-two:6.2.0'
 }
