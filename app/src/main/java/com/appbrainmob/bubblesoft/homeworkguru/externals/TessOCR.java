@@ -16,13 +16,17 @@ public class TessOCR {
 
     public TessOCR() {
         // TODO Auto-generated constructor stub
-        mTess = new TessBaseAPI();
-        String datapath = Environment.getExternalStorageDirectory() + "/tesseract/";
-        String language = "eng";
-        File dir = new File(datapath + "tessdata/");
-        if (!dir.exists())
-            dir.mkdirs();
-        mTess.init(datapath, language);
+        try {
+            mTess = new TessBaseAPI();
+            String datapath = Environment.getExternalStorageDirectory() + "/tesseract/";
+            String language = "eng";
+            File dir = new File(datapath + "tessdata/");
+            if (!dir.exists() || !dir.isDirectory())
+                dir.mkdirs();
+            mTess.init(datapath, language);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getOCRResult(Bitmap bitmap) {
