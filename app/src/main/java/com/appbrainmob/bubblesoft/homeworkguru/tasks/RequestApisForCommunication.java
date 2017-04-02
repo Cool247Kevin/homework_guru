@@ -22,15 +22,17 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  */
 public class RequestApisForCommunication {
 
+    private String question;
     private Context context;
     private ProgressDialog progressDialog;
+
 
     public RequestApisForCommunication(Context context) {
 
         this.context = context;
     }
 
-    public void accessApi() {
+    public void accessApi(String question) {
 
         onPreExecute();
 
@@ -41,7 +43,7 @@ public class RequestApisForCommunication {
 
         Api service = retrofit.create(Api.class);
 
-        Call<ResponseBody> result = service.question("europe", true, false, AppConstants.WEBKNOX_API_KEY);
+        Call<ResponseBody> result = service.answer(question, "text");
 
         result.enqueue(new Callback<ResponseBody>() {
             @Override

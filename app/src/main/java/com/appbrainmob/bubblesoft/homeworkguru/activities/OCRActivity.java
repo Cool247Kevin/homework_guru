@@ -11,11 +11,13 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appbrainmob.bubblesoft.homeworkguru.R;
 import com.appbrainmob.bubblesoft.homeworkguru.externals.TessOCR;
+import com.appbrainmob.bubblesoft.homeworkguru.tasks.RequestApisForCommunication;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,10 +29,10 @@ import java.util.Date;
 public class OCRActivity extends Activity implements View.OnClickListener {
 
     private TessOCR mTessOCR;
-    private TextView mResult;
+    private EditText mResult;
     private ProgressDialog mProgressDialog;
     private ImageView mImage;
-    private Button mButtonGallery, mButtonCamera;
+    private Button mButtonGallery, mButtonCamera, mButtonSearch;
     private String mCurrentPhotoPath;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int REQUEST_PICK_PHOTO = 2;
@@ -40,12 +42,14 @@ public class OCRActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ocr);
 
-        mResult = (TextView) findViewById(R.id.tv_result);
+        mResult = (EditText) findViewById(R.id.tv_result);
         mImage = (ImageView) findViewById(R.id.image);
         mButtonGallery = (Button) findViewById(R.id.bt_gallery);
         mButtonGallery.setOnClickListener(this);
         mButtonCamera = (Button) findViewById(R.id.bt_camera);
         mButtonCamera.setOnClickListener(this);
+        mButtonSearch = (Button) findViewById(R.id.bt_search);
+        mButtonSearch.setOnClickListener(this);
         mTessOCR = new TessOCR();
     }
 
@@ -195,6 +199,13 @@ public class OCRActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.bt_camera:
                 takePhoto();
+                break;
+            case R.id.bt_search:
+                String question = mResult.getText().toString();
+                if(!question.isEmpty()){
+                    RequestApisForCommunication requestApis = new RequestApisForCommunication(this);
+                    requestApis.accessApi(question);
+                }
                 break;
         }
     }
