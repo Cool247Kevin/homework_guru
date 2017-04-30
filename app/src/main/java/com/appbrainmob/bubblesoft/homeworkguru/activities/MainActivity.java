@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.appbrainmob.bubblesoft.homeworkguru.R;
-import com.appbrainmob.bubblesoft.homeworkguru.tasks.RequestApisForCommunication;
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -42,6 +40,10 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        // Test Api call
+        /*RequestApisForCommunication requestApis = new RequestApisForCommunication(this);
+        requestApis.accessApi("Apple");*/
 
     }
 

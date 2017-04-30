@@ -34,8 +34,6 @@ public class RequestApisForCommunication {
 
     public void accessApi(String question) {
 
-        onPreExecute();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(AppConstants.DUCKDUCKGO_BASE_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
@@ -43,7 +41,7 @@ public class RequestApisForCommunication {
 
         Api service = retrofit.create(Api.class);
 
-        Call<ResponseBody> result = service.answer(question, "text");
+        Call<ResponseBody> result = service.answer(question, "json");
 
         result.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -64,8 +62,6 @@ public class RequestApisForCommunication {
                 }
             }
         });
-
-        onPostExecute();
     }
 
     private void onPreExecute() {
