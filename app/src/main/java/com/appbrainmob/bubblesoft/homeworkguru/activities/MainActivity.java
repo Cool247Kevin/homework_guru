@@ -45,12 +45,6 @@ public class MainActivity extends Activity
 
     }
 
-    private void accessApi(Context context) {
-
-        RequestApisForCommunication requestApis = new RequestApisForCommunication(context);
-        requestApis.accessApi();
-    }
-
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments

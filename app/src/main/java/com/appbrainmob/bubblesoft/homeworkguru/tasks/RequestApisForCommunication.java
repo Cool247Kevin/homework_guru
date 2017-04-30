@@ -37,7 +37,7 @@ public class RequestApisForCommunication {
         onPreExecute();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(AppConstants.WEBKNOX_BASE_URL)
+                .baseUrl(AppConstants.DUCKDUCKGO_BASE_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
 

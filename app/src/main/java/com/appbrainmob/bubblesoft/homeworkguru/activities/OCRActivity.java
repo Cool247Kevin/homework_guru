@@ -2,6 +2,7 @@ package com.appbrainmob.bubblesoft.homeworkguru.activities;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -205,9 +206,22 @@ public class OCRActivity extends Activity implements View.OnClickListener {
                 if(!question.isEmpty()){
                     RequestApisForCommunication requestApis = new RequestApisForCommunication(this);
                     requestApis.accessApi(question);
+                    receiveApiQuery(this);
                 }
                 break;
         }
+    }
+
+    public String getResultText() {
+        return mResult.getText().toString();
+    }
+
+    private void receiveApiQuery(Context context) {
+
+        RequestApisForCommunication requestApis = new RequestApisForCommunication(context);
+        OCRActivity ocr = new OCRActivity();
+        requestApis.accessApi(ocr.getResultText());
+        mResult.setText(ocr.getResultText());
     }
 
     private void pickPhoto() {

@@ -5,7 +5,7 @@ package com.appbrainmob.bubblesoft.homeworkguru.constants;
  */
 public class AppConstants {
 
-    public static final String WEBKNOX_BASE_URL = "http://webknox.com/api/";
-    public static final String  WEBKNOX_API_KEY = "bejafaedbdufcysafrtekhnblesqzff";
+    public static final String DUCKDUCKGO_BASE_URL = "http://api.duckduckgo.com/";
+    public static final String DUCKDUCKGO_API_KEY = "";
 
 }
